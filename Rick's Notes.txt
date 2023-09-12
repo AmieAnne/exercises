@@ -1,0 +1,98 @@
+Rick's notes
+------------
+Note: square brackets [] denote placeholder values in my notes. The actual value will vary.
+
+Unix (Terminal) commands
+	ls - list - provides a list of files and their extension (.js, .exe, .txt, etc.) in the current folder
+	cd - change directory - move into a new folder (directory)
+		cd [folder name] - move into the specified folder name
+		cd \OneDrive\Desktop\LaunchCode - move through multiple folders in one command based on the path that is provided (OneDrive -> Desktop -> LaunchCode)
+			Note: this is the forward slash that is above the Enter key, not the backslash next the period
+		cd .. - move back one folder i.e. "exit" the folder
+	open data-and-variables-exercises.js (or any other filename and extension) - *open* the file; this will open the file in a text editor or Integrated Developer Environment (IDE) such
+		as Visual Studio Code
+			open \OneDrive\Desktop\LaunchCode\Javascript-projects\data-and-variables-exercises.js - open a file that is in a different directory without having to navigate to that directory
+				Note: the path might be wrong, it's just what I have in my notes
+	node data-and-variables-exercises.js (or any other *Javascript file (.js)*) - *execute* the file - this will run the code without using Visual Studio Code; similar to running an Executable
+		file (.exe)
+	
+	-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	ADVANCED CONCEPT: Nuget Package Manager (npm)
+		Nuget package manager, or npm for short, is a way to include additional code known as packages to provide extra functionality. Nuget packages are a way to reduce the size
+		of a framework such as NodeJS by making the framework more modular. NodeJS by itself will provide basic functionality to allow it to build, compile (i.e. convert the JavaScript
+		code into machine-readable instructions) and run your code. Most of the time you will need more functionality and therefore will need to install packages to be able to perform
+		additional features such as reading input and writing output.
+
+		We were running into problem where the program would display this message:
+
+			Cannot find module 'readline-sync'...blah, blah, blah.
+
+		These are the steps we took to figure out the problem and fix it:
+		1. Copy the error message. There's only so many error messages that a program can produce. There's also a lot of other people who likely have had the same issue and asked for
+		   help online. To make it easier to find a solution related to your problem, include the language and/or framework name (NodeJS) in your search so you don't pull results
+		   that are unrelated to your code.
+
+		   Search: javascript nodejs "Cannot find module 'readline-sync'"
+
+		2. Stack Overflow is your lord and savior. Stack Overflow is a forum for programmers that are requesting assistance. They have a Q/A format and the highest ranked answers are
+		   listed at the top. There's lots of other great resources to help debug and teach but Stack Overflow is by far the most popular.
+
+		   Per the Stack Overflow post we found, the reason we were getting this error is because your code was trying to reference code in a package called "readline-sync". We didn't
+		   have the package installed so your code couldn't find the code it needed.
+
+		3. Check to see if the proposed solution works for you. In this case the top rated answer suggested installing the package in command line (your course is using Terminal).
+		   The command provided was:
+		
+				npm install --save readline-sync
+
+				Breakdown:
+					npm - use Nuget Package Manager to execute the command
+					install - download and install the package
+					--save - include the package inside the dependencies section of the package.json file
+						(essentially "save" the package so you don't have to install it every time your run the program)
+					readline-sync - the name of the nuget package
+
+			We ran that command in Terminal and a message was displayed that the package was installed successfully. We ran the code again and it worked. :)
+	-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+JavaScript
+	let [variableName] - declare a variable
+	[variableName] = [value] - initialize a variable
+	let [variableName] = [value] - declare and initialize a variable
+
+	console.log(); - output/print a message to the console
+	console.log("The value of variableName is " + variableName); - string concatenation - mix strings and variables to make a dynamic message (it's dynamic because the variable value can change)
+
+		-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+		ADVANCED CONCEPT: String Interpolation
+		String interpolation is a shorthand way of doing string concatenation. Rather than breaking up a sentance with multiple variables,
+			you can use the backtick character (`) located to the left of the 1 key instead of double quotes. You would then use ${} to hold
+			a variable. For example, your moon mission message is this:
+				
+			console.log(shuttleName + " will take " + daysToMoon + " days to reach Moon.");
+
+		String interpolation will look like this:
+
+			console.log (`${shuttleName} will take ${daysToMoon} days to reach Moon`);
+
+		Both messages will look the same but string interpolation makes the message a bit more human readable.
+		-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	typeof([variableName]) - this will tell you the datatype of a variable. Datatypes include string, number, boolean (bool for short; they can only hold one of two values: true or false).
+
+Git/GitHub
+	Note: I'm still a novice with Git so my notes might not be accurate. I'll try my best to be accurate.
+
+	Git vs GitHub
+		Git is a revision control system, a tool to manage your source code history.
+		GitHub is a hosting service for Git repositories.
+		So they are not the same thing: Git is the tool, GitHub is the service for projects that use Git.
+		(https://stackoverflow.com/questions/13321556/difference-between-git-and-github)
+
+	Git commands
+		Repository (repo) - A series of files that make up a project. You can see your project in the Solution Explorer window. When you create a repo, you basically start recording
+			a history of your files and changes. You can then *push* your code to your repository to make commit (think of a commit like a checkpoint).
+		Branch - this is a series of commits with origin as the main branch. The original creator or other devs can then make make a copy of the repo, make changes and propose their
+			changes be added (pushed) to the origin.
+		Fork/pull - A fork (also known as a pull) is when you want to make a copy of the origin branch so you can make changes without affecting the original code.
+			Note: LaunchCode created and maintains the origin, your coursework will consist of making a copy so you can do your lessons without messing up the original.
